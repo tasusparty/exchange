@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tasusparty.exchange.dal.mapper.UserInfoMapper">
+
+    <insert id="insertUser" parameterType="com.tasusparty.exchange.facade.model.User">
+        <selectKey resultType="int" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO `exchange_community`.`user_info` (name, phone_no, password, created_at, updated_at, status)
+        VALUES (#{name}, #{phoneNo}, #{password}, NOW(), NOW(), 1)
+    </insert>
+
+</mapper>
